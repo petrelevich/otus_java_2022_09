@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+dependencies {
+    testImplementation 'org.openjdk.jmh:jmh-core'
+    testAnnotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.assertj:assertj-core'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
