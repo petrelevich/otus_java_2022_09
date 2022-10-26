@@ -1,13 +1,13 @@
 package ru.calculator;
 
 public class Data {
-    private final int value;
+    private final Integer value;
 
-    public Data(int value) {
+    public Data(Integer value) {
         this.value = value;
     }
 
-    public int getValue() {
+    public Integer getValue() {
         return value;
     }
 }
