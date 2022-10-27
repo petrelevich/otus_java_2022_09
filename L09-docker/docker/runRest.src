@@ -1,0 +1,40 @@
+docker run hello-world
+docker stats
+------
+docker run --rm --name rest-service \
+-p 8080:8080 \
+--network="host" \
+registry.gitlab.com/petrelevich/dockerregistry/rest-hello:0.0.0-8-main
+
+--------------------------
+docker run --rm --name rest-service \
+--memory=512m \
+--cpus 2 \
+-p 8080:8080 \
+--network="host" \
+-e JAVA_TOOL_OPTIONS="-Xms350m -Xmx350m -XX:+UseSerialGC" \
+registry.gitlab.com/petrelevich/dockerregistry/rest-hello:0.0.0-8-main
+
+--------------------------
+
+java -Xms350m -Xmx350m -jar  L09-docker.jar
+
+--------------------------
+
+docker run --rm --name rest-service \
+--memory=300m \
+--cpus 2 \
+-p 8080:8080 \
+--network="host" \
+-e JAVA_TOOL_OPTIONS="-Xms350m -Xmx350m -XX:+UseSerialGC" \
+registry.gitlab.com/petrelevich/dockerregistry/rest-hello:0.0.0-8-main
+
+--------------------------
+docker run --rm --name rest-service \
+--memory=256m \
+--cpus 2 \
+-p 8080:8080 \
+--network="host" \
+-e JAVA_TOOL_OPTIONS="-XX:InitialRAMPercentage=80 -XX:MaxRAMPercentage=80 -XX:+UseSerialGC" \
+registry.gitlab.com/petrelevich/dockerregistry/rest-hello:0.0.0-8-main
+

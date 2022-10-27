@@ -1,0 +1,30 @@
+jib {
+    container.creationTime = 'USE_CURRENT_TIMESTAMP'
+    from {
+        image = 'bellsoft/liberica-openjdk-alpine-musl:17.0.2-9'
+    }
+    to {
+        tags = [project.version.toString()]
+        image = 'registry.gitlab.com/petrelevich/dockerregistry/rest-hello'
+        auth {
+            username = gitlabUser ?: ""
+            password = gitlabPassword ?: ""
+        }
+    }
+}
+/*
+аутентификация:
+
+https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin#using-specific-credentials
+~/.gradle/gradle.properties
+gitlabUser=petrelevich
+gitlabPassword=****
+*/
+
+/*
+сборка проекта:
+
+./gradlew :L09-docker:build
+публикация:
+./gradlew :L09-docker:jib
+*/
