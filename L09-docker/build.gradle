@@ -12,7 +12,7 @@ targetCompatibility = JavaVersion.VERSION_17
 
 jgitver {
     strategy = "PATTERN"
-    nonQualifierBranches = "master"
+    nonQualifierBranches = "main"
     tagVersionPattern = "\${v}\${<meta.DIRTY_TEXT}"
     versionPattern =
             "\${v}\${<meta.COMMIT_DISTANCE}\${<meta.GIT_SHA1_8}" +
