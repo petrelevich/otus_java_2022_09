@@ -25,6 +25,9 @@ allprojects {
             dependency "com.google.guava:guava:${Versions.guava}"
             dependency "org.openjdk.jmh:jmh-core:${Versions.jmh}"
             dependency "org.openjdk.jmh:jmh-generator-annprocess:${Versions.jmh}"
+            dependency "org.ow2.asm:asm-commons:${Versions.asm}"
+            dependency("org.glassfish:jakarta.json:${Versions.glassfishJson}")
+
         }
     }
 
