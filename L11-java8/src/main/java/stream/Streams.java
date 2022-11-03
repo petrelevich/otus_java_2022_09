@@ -89,7 +89,9 @@ public class Streams {
     private static void flatMap() {
         var data = List.of(List.of(1,2,3,4), List.of(10,20,30,40), List.of(100,200,300,400));
 
-        var dataFlat = data.stream().flatMap(Collection::stream).collect(Collectors.toList());
+        var dataFlat = data.stream()
+                .flatMap(Collection::stream)
+                .toList();
         System.out.println(dataFlat);
     }
 
