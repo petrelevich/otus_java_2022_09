@@ -51,7 +51,7 @@ public class MonadExample {
 
         if (optional.isPresent()) {
             list.add(optional.get());
-            list.add(optional.get().toUpperCase());
+            listUpper.add(optional.get().toUpperCase());
 
             System.out.println(list);
             System.out.println(listUpper);
