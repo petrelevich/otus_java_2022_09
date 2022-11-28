@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package ru.otus.protobuf;
+
+option java_outer_classname = "HelloWorld";
+
+message HelloMessage {
+  string message = 1;
+  repeated int32 arrayIntData = 2;
+}

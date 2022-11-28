@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id "com.google.protobuf" version "0.8.18"
+    id 'idea'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+dependencies {
+    implementation 'com.google.guava:guava'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'org.glassfish:jakarta.json'
+    implementation 'com.google.protobuf:protobuf-java-util'
+}
+
+def protoSrcDir = "$projectDir/build/generated"
+
+idea {
+    module {
+        sourceDirs += file(protoSrcDir);
+    }
+}
+
+sourceSets {
+    main {
+        proto {
+            srcDir protoSrcDir
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.19.4'
+    }
+    generatedFilesBaseDir = protoSrcDir
+    generateProtoTasks {
+        ofSourceSet('main')
+    }
+}
+
+test {
+}
