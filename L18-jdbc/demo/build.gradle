@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+dependencies {
+    dependencies {
+        implementation 'ch.qos.logback:logback-classic'
+        implementation 'org.flywaydb:flyway-core'
+        implementation 'com.zaxxer:HikariCP'
+        implementation 'org.postgresql:postgresql'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+        testImplementation 'org.junit.jupiter:junit-jupiter-params'
+        testImplementation 'org.assertj:assertj-core'
+        testImplementation 'org.mockito:mockito-junit-jupiter'
+
+        testImplementation 'org.testcontainers:junit-jupiter'
+        testImplementation 'org.testcontainers:postgresql'
+    }
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.with {
+        encoding = 'UTF-8'
+    }
+}
