@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+dependencies {
+    implementation 'org.ow2.asm:asm-commons'
+}
+
+task shadowSetterDemo(type: Jar, dependsOn: shadowJar) {
+    archiveBaseName.set('setterDemo')
+    manifest {
+        attributes 'Main-Class': 'ru.otus.aop.instrumentation.setter.SetterDemo'
+        attributes 'Premain-Class': 'ru.otus.aop.instrumentation.setter.Agent'
+    }
+    from zipTree(shadowJar.archiveFile)
+}
+
+task shadowProxyDemo(type: Jar, dependsOn: shadowJar) {
+    archiveBaseName.set('proxyDemo')
+    manifest {
+        attributes 'Main-Class': 'ru.otus.aop.instrumentation.proxy.ProxyDemo'
+        attributes 'Premain-Class': 'ru.otus.aop.instrumentation.proxy.Agent'
+    }
+    from zipTree(shadowJar.archiveFile)
+}
+
+task shadowSummatorDemo(type: Jar, dependsOn: shadowJar) {
+    archiveBaseName.set('summatorDemo')
+    manifest {
+        attributes 'Main-Class': 'ru.otus.aop.instrumentation.changer.SummatorDemo'
+        attributes 'Premain-Class': 'ru.otus.aop.instrumentation.changer.Agent'
+    }
+    from zipTree(shadowJar.archiveFile)
+}
+
+tasks.build.dependsOn tasks.shadowSetterDemo
+tasks.build.dependsOn tasks.shadowProxyDemo
+tasks.build.dependsOn tasks.shadowSummatorDemo

@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "otus-postgres": {
+      "Name": "otus-postgres",
+      "Group": "Servers",
+      "Host": "otus-postgres",
+      "Port": 5432,
+      "Username": "usr",
+      "SSLMode": "prefer",
+      "MaintenanceDB": "postgres"
+    }
+  }
+}
+

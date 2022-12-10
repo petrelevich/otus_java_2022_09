@@ -1,6 +1,9 @@
 plugins {
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id 'com.github.johnrengelman.shadow' version '7.1.2' apply false
+    id "org.springframework.boot" version "2.7.2" apply false
+    id "com.google.cloud.tools.jib" version "3.2.1" apply false
+    id "fr.brouillard.oss.gradle.jgitver" version "0.10.0-rc03" apply false
 }
 
 allprojects {
@@ -22,6 +25,9 @@ allprojects {
             dependency "com.google.guava:guava:${Versions.guava}"
             dependency "org.openjdk.jmh:jmh-core:${Versions.jmh}"
             dependency "org.openjdk.jmh:jmh-generator-annprocess:${Versions.jmh}"
+            dependency "org.ow2.asm:asm-commons:${Versions.asm}"
+            dependency("org.glassfish:jakarta.json:${Versions.glassfishJson}")
+
         }
     }
 

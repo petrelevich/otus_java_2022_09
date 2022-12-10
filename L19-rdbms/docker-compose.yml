@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  postgres:
+    container_name: otus-postgres
+    hostname: otus-postgres
+    build: ./docker/postgres
+    ports:
+       - "5432:5432"
+    command: postgres -c shared_preload_libraries=pg_stat_statements -c pg_stat_statements.track=all -c max_connections=200
+    environment:
+      - POSTGRES_USER=usr
+      - POSTGRES_PASSWORD=pwd
+      - POSTGRES_DB=postgres
+
+  pgadmin:
+    container_name: otus-pgadmin
+    hostname: otus-pgadmin
+    build: ./docker/pgadmin
+    ports:
+      - "9090:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=postgres@localhost.local
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+      - PGADMIN_CONFIG_SERVER_MODE=False
+      - PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED=False
+    depends_on:
+      - postgres
