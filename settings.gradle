@@ -15,7 +15,7 @@ include 'L06-annotations'
 include 'L08-gc:demo'
 include 'L08-gc:homework'
 
-include 'L09-docker'
+//include 'L09-docker'
 
 include 'L10-byteCodes'
 include 'L11-java8'
@@ -34,3 +34,5 @@ include 'L17-nio-logging'
 
 include 'L18-jdbc:demo'
 include 'L18-jdbc:homework'
+
+include 'L20-hibernate'
