@@ -1,0 +1,71 @@
+version: '3.5'
+services:
+
+  mongo1:
+    hostname: mongo1
+    container_name: localmongo1
+    image: mongo:5.0
+    expose:
+      - 27017
+    ports:
+      - 30001:27017
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
+
+  mongo2:
+    hostname: mongo2
+    container_name: localmongo2
+    image: mongo:5.0
+    expose:
+      - 27017
+    ports:
+      - 30002:27017
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
+
+  mongo3:
+    hostname: mongo3
+    container_name: localmongo3
+    image: mongo:5.0
+    expose:
+      - 27017
+    ports:
+      - 30003:27017
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
+
+  mongosetup:
+    image: mongo:5.0
+    depends_on:
+      - mongo1
+      - mongo2
+      - mongo3
+    volumes:
+      - ./scripts:/scripts
+    restart: "no"
+    entrypoint: [ "bash", "/scripts/mongo_setup.sh"]
+
+  cassandra:
+    image: cassandra:latest
+    ports:
+      - "9042:9042"
+      - "7199:7199"
+    depends_on:
+      - mongosetup
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    depends_on:
+      - mongosetup
+
+  neo4j:
+    image: neo4j:latest
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=none
+    depends_on:
+      - mongosetup

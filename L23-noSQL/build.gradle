@@ -1,0 +1,11 @@
+plugins {
+    id 'idea'
+}
+
+allprojects {
+    group "ru.otus"
+
+    repositories {
+        mavenCentral()
+    }
+}

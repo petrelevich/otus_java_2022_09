@@ -28,6 +28,16 @@ allprojects {
             dependency "org.ow2.asm:asm-commons:${Versions.asm}"
             dependency("org.glassfish:jakarta.json:${Versions.glassfishJson}")
 
+            dependency("org.projectlombok:lombok:${Versions.lombok}")
+            dependency("com.google.code.gson:gson:${Versions.gson}")
+            dependency("com.datastax.oss:java-driver-core:${Versions.cassandra}")
+
+            dependency("org.mongodb:mongodb-driver-core:${Versions.mongodb}")
+            dependency("org.mongodb:mongodb-driver-sync:${Versions.mongodb}")
+            dependency("org.mongodb:bson:${Versions.mongodb}")
+            dependency("org.mongodb:mongodb-driver-reactivestreams:${Versions.mongodbReactive}")
+            dependency("org.neo4j.driver:neo4j-java-driver:${Versions.neo4j}")
+            dependency("redis.clients:jedis:${Versions.jedis}")
         }
     }
 
