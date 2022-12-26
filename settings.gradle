@@ -47,3 +47,5 @@ include 'L23-noSQL:mongo-db-reactive-demo'
 include 'L23-noSQL:neo4j-demo'
 include 'L23-noSQL:redis-demo'
 include 'L23-noSQL:cassandra-demo'
+
+include 'L25-webServer'
