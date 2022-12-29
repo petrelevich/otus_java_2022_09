@@ -49,3 +49,6 @@ include 'L23-noSQL:redis-demo'
 include 'L23-noSQL:cassandra-demo'
 
 include 'L25-webServer'
+
+include 'L26-di:class-demo'
+include 'L26-di:homework-template'
