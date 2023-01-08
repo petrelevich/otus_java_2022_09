@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Create client</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        input:read-only {
+            background: lightgray;
+        }
+
+        .row {
+            margin-top: 10px;
+        }
+    </style>
+
+    <script>
+        function saveClient() {
+            const clientDataContainer = document.getElementById('clientDataContainer');
+            const clientNameInput = document.getElementById("clientName");
+            const clientName = clientNameInput.value;
+            fetch('/api/client', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({name: clientName})
+             })
+                .then(response => response.json())
+                .then(client => clientDataContainer.innerHTML = 'Клиент создан: ' + JSON.stringify(client));
+        }
+    </script>
+</head>
+<body>
+
+<form id="create-form" th:action="@{/client/save}" th:object="${client}" th:method="post" accept-charset="utf-8">
+    <h1>New User:</h1>
+
+    <div class="row">
+        <label for="clientName">Name:</label>
+        <input id="clientName" name="name" type="text" th:value="*{name}" value="John Doe"/>
+    </div>
+
+    <div class="row">
+        <button type="submit">Save with form</button>
+        <button type="button" onclick="saveClient()">Save with REST</button>
+    </div>
+</form>
+<pre id = "clientDataContainer"></pre>
+
+</body>
+</html>

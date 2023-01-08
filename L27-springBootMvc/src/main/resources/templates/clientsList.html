@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of all clients</title>
+
+    <script>
+        function getClient(url, valueControlName) {
+            const valueControl = document.getElementById(valueControlName);
+            const clientDataContainer = document.getElementById('clientDataContainer');
+            const fullUrl = url + (valueControl? (encodeURIComponent(valueControl.value)) : '');
+            fetch(fullUrl)
+                .then(response => response.json())
+                .then(client => clientDataContainer.innerHTML = JSON.stringify(client));
+        }
+
+    </script>
+
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .clients, .clients td {
+            border: 1px solid lightgray;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: block;
+        }
+
+        input {
+            width: 150px;
+        }
+
+
+        select {
+            width: 154px;
+        }
+
+        button {
+            width: 250px;
+        }
+
+        .controls-container {
+            margin-bottom: 5px;
+        }
+
+        .single-button-container {
+            margin-left: 158px;
+        }
+
+        h3 {
+            background-image: url("../static/listmark.png");
+            background-repeat: no-repeat;
+            padding: 2px;
+            padding-left: 30px;
+        }
+    </style>
+
+    <style type="text/css" th:inline="text">
+        [[h3]] {
+            background-image: url([[@{/listmark.png}]]);
+            background-repeat: no-repeat;
+            padding: 2px;
+            padding-left: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<h3>Данные о системе:</h3>
+<span th:text="${osData}"></span>
+
+<h3>Сообщение из настроек (application.yml):</h3>
+<span th:text="${applicationYmlMessage}"></span>
+<br/>
+<span th:text="${@environment.getProperty('app.client-list-page.msg2')}"></span>
+
+<br/><br/>
+<h3>Клиенты:</h3>
+
+<table class="clients">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="client : ${clients}">
+        <td th:text="${client.id}">1</td>
+        <td th:text="${client.name}">John Doe</td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/client/create}" href="clientCreate.html">New client</a>
+
+<br/><br/>
+<h3>Тест View без контроллера:</h3>
+<a th:href="@{/no-handler-view}">Перейти на View без контроллера</a>
+
+
+<br/><br/>
+<h3>API:</h3>
+
+
+<a th:href="@{/api/client?name=%D0%94%D0%B6%D0%B0%D0%BD%D0%B5%D1%82%20%D0%92%D1%8D%D1%80%D0%BD%D0%B8}">
+    Запрос клиента по имени Джанет Вэрни
+</a>
+<a th:href="@{/api/client/2}">Запрос клиента с id = 2</a>
+<a th:href="@{/api/client/random}">Запрос случайного клиента</a>
+<br/>
+<br/>
+
+<div class="controls-container">
+    <input type="text" id="clientIdTextBox" value="3" placeholder="Введите id клиента">
+    <button onclick="getClient('api/client/', 'clientIdTextBox')">Получить клиента по id</button>
+</div>
+<div class="controls-container">
+    <select id="clientsNamesSelect">
+        <option value="Крис Гир">Крис Гир</option>
+        <option value="Ая Кэш" selected>Ая Кэш</option>
+        <option value="Десмин Боргес">Десмин Боргес</option>
+        <option value="Кетер Донохью">Кетер Донохью</option>
+        <option value="Стивен Шнайдер">Стивен Шнайдер</option>
+        <option value="Джанет Вэрни">Джанет Вэрни</option>
+        <option value="Брэндон Смит">Брэндон Смит</option>
+    </select>
+    <button onclick="getClient('api/client?name=', 'clientsNamesSelect')">Получить клиента по имени</button>
+</div>
+<div class="controls-container single-button-container">
+    <button onclick="getClient('api/client/random')">Получить случайного клиента</button>
+</div>
+
+<pre id="clientDataContainer"></pre>
+
+</body>
+</html>
