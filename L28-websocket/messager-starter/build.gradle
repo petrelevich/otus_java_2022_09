@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow'
+    id 'maven-publish'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+dependencies {
+    implementation ('org.springframework.boot:spring-boot-starter') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    compileOnly 'org.slf4j:slf4j-api'
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+
+    implementation 'ru.otus:messager:1.0'
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'ru.otus'
+            artifactId = 'messager-starter'
+            version = '1.0'
+
+            from components.java
+        }
+    }
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.build.dependsOn tasks.publishToMavenLocal

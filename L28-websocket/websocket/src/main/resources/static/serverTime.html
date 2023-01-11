@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Server time</title>
+
+    <script type="text/JavaScript">
+        function getTime() {
+            setInterval(function () {
+                fetch('http://localhost:8080/getTime')
+                    .then(response => response.json())
+                    .then(dataTime => {
+                        document.getElementById("currentTime").innerHTML = dataTime;
+                    })
+            }, 1000);
+        }
+    </script>
+</head>
+<body onload="getTime();">
+<div id="currentTime"></div>
+</body>
+
+</html>

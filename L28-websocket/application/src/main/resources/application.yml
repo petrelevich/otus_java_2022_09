@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: "/swagger-ui"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, beans
+
+application:
+  param-name: "Test Props msg@@@"
+  rest:
+    api:
+      prefix: /api
+
+
+messager:
+  message: "Hello from Messager Otus Java"

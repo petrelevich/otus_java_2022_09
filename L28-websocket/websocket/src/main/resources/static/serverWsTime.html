@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Server WebSocket time</title>
+  <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+  <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
+
+  <script type="text/JavaScript">
+    function getTime() {
+      const stompClient = Stomp.over(new SockJS('/gs-guide-websocket'));
+      stompClient.connect({}, (frame) => {
+        console.log('Connected: ' + frame);
+        stompClient.subscribe('/topic/currentTime', (timeMsg) => document.getElementById("currentTime").innerHTML = timeMsg.body);
+      });
+    }
+  </script>
+</head>
+<body onload="getTime();">
+<div id="currentTime"></div>
+</body>
+
+</html>
