@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5430/demoDB
+    username: usr
+    password: pwd
+  flyway:
+    enabled: true
+
+logging:
+  level:
+    org.springframework.jdbc.core.JdbcTemplate: TRACE
