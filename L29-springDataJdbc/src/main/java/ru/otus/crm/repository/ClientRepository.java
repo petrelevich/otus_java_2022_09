@@ -6,7 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import ru.otus.crm.model.Client;
 
-import java.util.List;
 import java.util.Optional;
 
 
