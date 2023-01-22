@@ -48,17 +48,19 @@ include 'L23-noSQL:neo4j-demo'
 include 'L23-noSQL:redis-demo'
 include 'L23-noSQL:cassandra-demo'
 
-include 'L25-webServer'
+include 'L24-webServer'
 
-include 'L26-di:class-demo'
-include 'L26-di:homework-template'
+include 'L25-di:class-demo'
+include 'L25-di:homework-template'
 
-include 'L27-springBootMvc'
+include 'L26-springBootMvc'
 
-include 'L28-websocket:websocket'
-include 'L28-websocket:messager'
-include 'L28-websocket:messager-starter'
-include 'L28-websocket:application'
+include 'L27-websocket:websocket'
+include 'L27-websocket:messager'
+include 'L27-websocket:messager-starter'
+include 'L27-websocket:application'
 
-include 'L29-springDataJdbc'
-include 'L30-threads'
+include 'L28-springDataJdbc'
+include 'L29-threads'
+
+include 'L30-JMM'

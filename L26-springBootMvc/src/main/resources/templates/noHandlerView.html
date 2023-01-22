@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>View without controller</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+    </style>
+    <style th:inline="text">
+        h3 {
+            background: url([[@{/listmark.png}]]) no-repeat;
+            padding: 2px;
+            padding-left: 30px;
+        }
+    </style>
+</head>
+<body>
+<h3>Я View без контроллера</h3>
+<a th:href="@{/}">Обратно</a>
+
+</body>
+</html>
