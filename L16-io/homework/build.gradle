@@ -6,6 +6,7 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
+    implementation 'javax.json:javax.json-api:1.1.4'
     implementation 'com.google.guava:guava'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
     implementation 'javax.json:javax.json-api'

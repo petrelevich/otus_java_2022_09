@@ -7,5 +7,5 @@ targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
     implementation("ch.qos.logback:logback-classic")
-    implementation("org.ehcache:ehcache")
+    implementation("org.ehcache:ehcache:3.10.8")
 }

@@ -1,11 +1,11 @@
 public interface Versions {
-    String guava = "31.0.1-jre";
+    String guava = "31.1-jre";
     String jmh = "1.35";
     String asm = "9.2";
     String glassfishJson = "2.0.1";
 
     String lombok = "1.18.24";
-    String gson = "2.9.1";
+    String gson = "2.10.1";
 
     String mongodb = "4.7.1";
     String mongodbReactive = "4.7.1";

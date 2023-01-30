@@ -43,6 +43,7 @@ allprojects {
             dependency("org.webjars:stomp-websocket:${Versions.stomp}")
             dependency("org.webjars:bootstrap:${Versions.bootstrap}")
             dependency("org.springdoc:springdoc-openapi-starter-webmvc-ui:${Versions.springDocOpenapiUi}")
+            dependency("com.google.code.findbugs:jsr305:${Versions.jsr305}")
         }
     }
 
