@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+    id "com.google.protobuf" version "0.8.16"
+    id 'idea'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+dependencies {
+    implementation "io.grpc:grpc-netty"
+    implementation "io.grpc:grpc-protobuf"
+    implementation "io.grpc:grpc-stub"
+    implementation "com.google.protobuf:protobuf-java"
+    implementation "com.google.errorprone:error_prone_annotations:${Versions.errorProneAnnotations}"
+
+    implementation "org.apache.tomcat:annotations-api:${Versions.tomcatAnnotationsApi}"
+}
+
+/*
+def filesBaseDir = "${project.projectDir}/src/"
+def protoSrcDir = "${project.projectDir}/src/main/proto"
+def grpcSrcDir = "${project.projectDir}/src/main/grpc"
+*/
+
+def filesBaseDir = "$projectDir/build/generated"
+def protoSrcDir = "$projectDir/build/generated/proto"
+def grpcSrcDir = "$projectDir/build/generated/grpc"
+
+sourceSets {
+    main {
+        proto {
+            srcDir protoSrcDir
+        }
+        java {
+            srcDir grpcSrcDir
+        }
+    }
+}
+
+idea {
+    module {
+        sourceDirs += file(protoSrcDir);
+        sourceDirs += file(grpcSrcDir);
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.12.1'
+    }
+
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.30.2'
+
+        }
+    }
+
+    generatedFilesBaseDir = filesBaseDir
+    generateProtoTasks {
+        ofSourceSet('main')*.plugins { grpc {} }
+    }
+}
+
+test {}

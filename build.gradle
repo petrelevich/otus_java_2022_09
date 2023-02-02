@@ -44,6 +44,10 @@ allprojects {
             dependency("org.webjars:bootstrap:${Versions.bootstrap}")
             dependency("org.springdoc:springdoc-openapi-starter-webmvc-ui:${Versions.springDocOpenapiUi}")
             dependency("com.google.code.findbugs:jsr305:${Versions.jsr305}")
+
+            dependency("io.grpc:grpc-netty:${Versions.grpc}")
+            dependency("io.grpc:grpc-protobuf:${Versions.grpc}")
+            dependency("io.grpc:grpc-stub:${Versions.grpc}")
         }
     }
 
