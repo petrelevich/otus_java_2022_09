@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+dependencies {
+    implementation project(':L34-rabbitMQ:allServicesModels')
+
+    implementation("ch.qos.logback:logback-classic")
+    implementation ("org.projectlombok:lombok")
+    annotationProcessor ("org.projectlombok:lombok")
+    implementation("com.fasterxml.jackson.core:jackson-core")
+    implementation("com.fasterxml.jackson.core:jackson-databind")
+    implementation("org.springframework.boot:spring-boot-starter-amqp")
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.with {
+        encoding = 'UTF-8'
+    }
+}

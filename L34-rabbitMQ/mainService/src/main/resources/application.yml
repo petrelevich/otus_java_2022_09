@@ -1,0 +1,7 @@
+spring:
+  rabbitmq:
+    addresses: "localhost"
+
+    listener:
+      simple:
+        default-requeue-rejected: false

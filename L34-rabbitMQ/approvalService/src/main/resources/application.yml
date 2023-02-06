@@ -1,0 +1,8 @@
+spring:
+  rabbitmq:
+    addresses: "localhost"
+    listener:
+      simple:
+        prefetch: 1
+      direct:
+        prefetch: 1

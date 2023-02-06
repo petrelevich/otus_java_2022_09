@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+dependencies {
+    implementation ("jakarta.persistence:jakarta.persistence-api")
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.with {
+        encoding = 'UTF-8'
+    }
+}
