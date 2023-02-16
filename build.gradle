@@ -48,6 +48,8 @@ allprojects {
             dependency("io.grpc:grpc-netty:${Versions.grpc}")
             dependency("io.grpc:grpc-protobuf:${Versions.grpc}")
             dependency("io.grpc:grpc-stub:${Versions.grpc}")
+            dependency("com.github.tomakehurst:wiremock:${Versions.wiremock}")
+            dependency("io.r2dbc:r2dbc-postgresql:${Versions.r2dbcPostgresql}")
         }
     }
 
@@ -63,6 +65,7 @@ allprojects {
             force("org.codehaus.jettison:jettison:1.1")
             force("net.java.dev.jna:jna:5.8.0")
             force("com.google.errorprone:error_prone_annotations:2.7.1")
+            force("org.ow2.asm:asm:9.4")
         }
     }
 }

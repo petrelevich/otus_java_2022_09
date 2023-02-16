@@ -1,0 +1,5 @@
+server:
+  port: 8080
+
+datastore:
+  url: http://localhost:8081

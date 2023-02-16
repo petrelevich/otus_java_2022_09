@@ -80,3 +80,10 @@ include 'L34-rabbitMQ:mainService'
 
 include 'L35-NIO'
 include 'L36-netty'
+
+include 'L38-webflux:source'
+include 'L38-webflux:processor'
+include 'L38-webflux:client'
+
+include 'L38-webflux-chat:client-service'
+include 'L38-webflux-chat:datastore-service'
