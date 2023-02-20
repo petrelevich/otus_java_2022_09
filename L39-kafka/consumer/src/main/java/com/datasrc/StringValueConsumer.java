@@ -28,7 +28,7 @@ public class StringValueConsumer {
         this.dataConsumer = dataConsumer;
     }
 
-    public void startSending() {
+    public void startConsuming() {
        // executor.scheduleAtFixedRate(this::poll, 0, MAX_POLL_INTERVAL_MS * 2L, TimeUnit.MILLISECONDS);
         executor.scheduleAtFixedRate(this::poll, 0, MAX_POLL_INTERVAL_MS / 2L, TimeUnit.MILLISECONDS);
     }

@@ -1,7 +1,6 @@
 package com.datasrc;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -41,7 +40,7 @@ class StringValueConsumerTest {
     }
 
     @Test
-    void dataHandlerTest() throws JsonProcessingException {
+    void dataHandlerTest()  {
         //given
         List<StringValue> stringValues = LongStream.range(0, 9).boxed()
                 .map(idx -> new StringValue(idx, "test:" + idx))
@@ -54,7 +53,7 @@ class StringValueConsumerTest {
         var dataConsumer = new StringValueConsumer(myConsumer, factStringValues::add);
 
         //when
-        CompletableFuture.runAsync(dataConsumer::startSending);
+        CompletableFuture.runAsync(dataConsumer::startConsuming);
 
         //then
         await().atMost(30, TimeUnit.SECONDS).until(() -> factStringValues.size() == stringValues.size());
